@@ -1,3 +1,8 @@
+import entities.StudentProfile;
+import helper.EligibilityEngine;
+import helper.LegacyFlags;
+import store.FakeEligibilityStore;
+
 public class Main {
     public static void main(String[] args) {
         System.out.println("=== Placement Eligibility ===");

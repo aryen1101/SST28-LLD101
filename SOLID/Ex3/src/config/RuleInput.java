@@ -1,4 +1,5 @@
-// Smell: unused config-like class.
+package config;
+
 public class RuleInput {
     public double minCgr = 8.0;
     public int minAttendance = 75;

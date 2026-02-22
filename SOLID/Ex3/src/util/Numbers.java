@@ -1,3 +1,5 @@
+package util;
+
 // Smell: generic util
 public class Numbers {
     public static double clamp(double x, double a, double b) {
