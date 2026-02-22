@@ -1,3 +1,10 @@
+import entities.Notification;
+import service.impl.EmailSender;
+import service.NotificationSender;
+import service.impl.SmsSender;
+import service.impl.WhatsAppSender;
+import store.AuditLog;
+
 public class Main {
     public static void main(String[] args) {
         System.out.println("=== Notification Demo ===");
@@ -5,17 +12,14 @@ public class Main {
 
         Notification n = new Notification("Welcome", "Hello and welcome to SST!", "riya@sst.edu", "9876543210");
 
-        NotificationSender email = new EmailSender(audit);
-        NotificationSender sms = new SmsSender(audit);
-        NotificationSender wa = new WhatsAppSender(audit);
+        NotificationSender[] senders = {
+                new EmailSender(audit),
+                new SmsSender(audit),
+                new WhatsAppSender(audit)
+        };
 
-        email.send(n);
-        sms.send(n);
-        try {
-            wa.send(n);
-        } catch (RuntimeException ex) {
-            System.out.println("WA ERROR: " + ex.getMessage());
-            audit.add("WA failed");
+        for (NotificationSender sender : senders) {
+            sender.send(n);
         }
 
         System.out.println("AUDIT entries=" + audit.size());
