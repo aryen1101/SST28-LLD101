@@ -1,9 +1,11 @@
+package dto;
+
 public class ExportRequest {
     public final String title;
     public final String body;
 
     public ExportRequest(String title, String body) {
-        this.title = title;
-        this.body = body;
+        this.title = title != null ? title : "";
+        this.body = body != null ? body : "";
     }
 }
