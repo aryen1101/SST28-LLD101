@@ -1,4 +1,8 @@
-import java.util.*;
+package dto;
+
+import enums.AddOn;
+
+import java.util.List;
 
 public class BookingRequest {
     public final int roomType;
