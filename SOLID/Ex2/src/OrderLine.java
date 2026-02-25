@@ -1,5 +1,3 @@
-package dto;
-
 public class OrderLine {
     public final String itemId;
     public final int qty;
