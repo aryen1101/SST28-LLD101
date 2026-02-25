@@ -1,7 +1,4 @@
-package store;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class AuditLog {
     private final List<String> entries = new ArrayList<>();

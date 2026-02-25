@@ -1,8 +1,3 @@
-package service;
-
-import entities.Notification;
-import store.AuditLog;
-
 public abstract class NotificationSender {
     protected final AuditLog audit;
 
@@ -16,5 +11,5 @@ public abstract class NotificationSender {
         doSend(n);
     }
 
-    protected abstract void doSend(Notification n);
+    public abstract void doSend(Notification n);
 }
