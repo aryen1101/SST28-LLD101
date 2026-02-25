@@ -1,19 +1,17 @@
-package parsers;
-
-import dto.StudentData;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class StudentParser implements Parser<StudentData> {
+public class InputParser {
 
-    @Override
     public StudentData parse(String raw) {
         Map<String, String> kv = new LinkedHashMap<>();
         String[] parts = raw.split(";");
         for (String p : parts) {
             String[] t = p.split("=", 2);
-            if (t.length == 2) kv.put(t[0].trim(), t[1].trim());
+            if (t.length == 2) {
+                kv.put(t[0].trim(), t[1].trim());
+            }
         }
 
         String name = kv.getOrDefault("name", "");
@@ -23,4 +21,5 @@ public class StudentParser implements Parser<StudentData> {
 
         return new StudentData(name, email, phone, program);
     }
+
 }
