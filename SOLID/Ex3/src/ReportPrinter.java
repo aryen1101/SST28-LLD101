@@ -1,9 +1,3 @@
-package printer;
-
-import entities.StudentProfile;
-import helper.EligibilityEngineResult;
-import helper.LegacyFlags;
-
 public class ReportPrinter {
     public void print(StudentProfile s, EligibilityEngineResult r) {
         System.out.println("Student: " + s.name + " (CGR=" + String.format("%.2f", s.cgr)

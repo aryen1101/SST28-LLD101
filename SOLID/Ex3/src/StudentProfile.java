@@ -1,5 +1,3 @@
-package entities;
-
 public class StudentProfile {
     public final String rollNo;
     public final String name;
