@@ -1,17 +1,14 @@
 The Problem
+In the existing code the TransportBookingService was tightly coupled with its own dependencies like it was dependent on concrete classes like DistanceCalculator DriverAllocator and PaymentGateway directly so suppose if we have to change the Payment Gateway for a different provider, we had to manually open and modify the TransportBookingService.java file. Since highlevelmodule like BookingService is dependent on low level modules like DistanceCalculator etc, hence it is violation DIP.
 
-In the existing code the TransportBookingService was tightly coupled with its own dependencies like it was dependent on concrete classes like DistanceCalculator DriverAllocator and PaymentGateway directly so suppose if we have to change the Payment Gateway for a different provider, you had to manually open and modify the TransportBookingService.java file.
-
-2. Our Approach: Dependency Injection
+Our Approach: Dependency Injection
 To solve this, we can inverted the control of the application by following these steps:
 
-Defined Interfaces: You created IDistanceCalculator, IDriverAllocator, and IPaymentGateway. Now our existing classes will depend on these interface.
+We created IDistanceCalculator, IDriverAllocator, and IPaymentGateway. Now our existing classes will depend on these interface.
+The TransportBookingService no longer creates its own tools. It will ask for them using interfaces in constructor hence DIP is not violated because now both highlevel and lowlevel modules are dependent on abstraction.
+Now In Main.java, we now instantiate the concrete versions (like DistanceCalculator) and inject them into the pipeline.
 
-Constructor Injection: The TransportBookingService no longer creates its own tools. 
-
-Instead it will be coupled with interfaces instead of concrete class
-You moved all the new object creation to Main.java, which now acts as the "Assembly Plant" for the system.
-
+Example -> 
 So initiallly to change paymentgateway to different provider we will have to change the PayemntGateway from Service class hence reducing abstraction
 But in the new way we can create a new provider which will implement the existing PaymentGateway interface and since service class dont depend on concrete class so we will not have to change anything in service class
 We can directly go to Main class and create a new Payment provider and inject it in service class.

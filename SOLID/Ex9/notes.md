@@ -1,19 +1,16 @@
-1. The Problem in the existing code was that
+The Problem in the existing code was that
 Originally, the EvaluationPipeline was directly creating its own workers using the new keyword.
-If you wanted to change how plagiarism was checked, you had to modify the EvaluationPipeline.java file.
-No Abstractions: The high-level "Policy" (how to evaluate a student) was dependent on low-level "Details" (how to write a file or calculate a score).
+If we wanted to change how plagiarism was checked, we had to modify the EvaluationPipeline.java file.
+No Abstractions: The high-level Policy was dependent on low-level Details breaking the dependency inversion principle
 
-2. Our Approach: Dependency Injection
-To solve this, you "inverted" the relationship by following these steps:
+Our Approach: Dependency Injection
+To solve this, we inverted the relationship by following these steps:
 
-Defined Interfaces: You created IPlagiarismChecker, ICodeGrader, and IReportWriter. These act as the "contracts" that the pipeline depends on.
-
-Constructor Injection: The EvaluationPipeline no longer creates its own tools. Instead, it asks for them in its constructor.
-
-Decoupled Main: In Main.java, you now instantiate the concrete versions (like PlagiarismChecker) and "inject" them into the pipeline.
+Defined Interfaces: You created IPlagiarismChecker, ICodeGrader, and IReportWriter. These act as the contracts that the pipeline depends on.
+Now our existing classes will implement these interfaces and  The EvaluationPipeline no longer creates its own tools. Instead, it will ask for them using interfaces in the constructors
+Now In Main.java, we now instantiate the concrete versions (like PlagiarismChecker) and inject them into the pipeline.
 
 Example
-
 Lets take an example suppose we have to add a new type of code grader
 So in the old example if we are changing code grader so we will have to change our code in 
 evaluationpipeline from existing code grader to new code grader where errors can happen 
