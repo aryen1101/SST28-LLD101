@@ -1,7 +1,6 @@
 package com.example.tickets;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -33,7 +32,7 @@ public class IncidentTicket {
         this.title = builder.title;
         this.description = builder.description;
         this.priority = builder.priority;
-        this.tags = Collections.unmodifiableList(new ArrayList<>(builder.tags));
+        this.tags = new ArrayList<>(builder.tags);
         this.assigneeEmail = builder.assigneeEmail;
         this.customerVisible = builder.customerVisible;
         this.slaMinutes = builder.slaMinutes;
@@ -62,7 +61,7 @@ public class IncidentTicket {
     }
 
     public List<String> getTags() {
-        return tags;
+        return new ArrayList<>(tags);
     }
 
     public String getAssigneeEmail() {
