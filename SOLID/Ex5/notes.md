@@ -9,4 +9,4 @@ if we want to change the exporter in future we dont have to check for anything.
 
 Example
 Lets Suppose we have to add a new Exporter(ExcelExporter) then in the old code, we can have different rules for character limits or null and might use try catch for this in main file hence it will behave differently then other exporters
-In the new way we will implement the Exporter in this class also and now our ExcelExporter will follow the same logic as other exporters for limits or null check, no we can swap between these exporter anytime without checking.
+In the new way we will implement the Exporter in this class also and now our ExcelExporter will follow the same logic as other exporters for limits or null check, no we can swap between these exporter anytime without checking.       
